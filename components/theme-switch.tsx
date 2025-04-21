@@ -1,10 +1,12 @@
+'use client'
+
 import { FC } from "react";
-import {Switch} from "@heroui/react";
+import { Switch } from "@heroui/react"; // Adjusted import for the new switch
 import { useTheme } from "next-themes";
 import { useIsSSR } from "@react-aria/ssr";
 import clsx from "clsx";
 
-import { SunIcon, MoonIcon } from './icon'
+import { SunIcon, MoonIcon } from "@/components/icon";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -15,7 +17,11 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className }) => {
   const isSSR = useIsSSR();
 
   const onChange = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    if (theme === "light") {
+        setTheme("dark");
+      } else {
+        setTheme("light");
+      }
   };
 
   return (
@@ -33,6 +39,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className }) => {
           thumbIcon: "w-5 h-5",
         }}
         defaultSelected={theme === "light" || isSSR}
+        isSelected={theme === "light"} 
         thumbIcon={({ isSelected, className: iconClassName }) =>
           isSelected ? (
             <SunIcon className={iconClassName} />

@@ -31,11 +31,11 @@ export default function BlogList({ posts }: BlogListProps) {
             <RxCross2 />
           </Button>
         </Link>
-        <h1 className="text-3xl font-medium">My Blog</h1>
+        <h1 className="text-2xl font-[500]">My Blog</h1>
       </div>
 
       {/* blog list*/}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post) => (
           <Link key={post._id} href={`/blog/${post.slug}`} className="block">
             <Card 

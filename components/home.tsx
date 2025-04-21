@@ -17,9 +17,7 @@ import AnimatedEmoji from "@/components/animated-emoji";
 import MapComponent from "@/components/map";
 import WebAgent from "@/components/webagent";
 import Chatbot from "@/components/chatbot";
-import { MiniModel } from "@/components/mini";
-import { AnimationSwitch } from "@/components/animation-swith";
-import MiniPic from "@/components/mini-pic";
+
 import Actions from "@/components/actions";
 import Paper from "@/components/paper";
 
@@ -50,7 +48,7 @@ const Home = ({
 }: HomeProps) => {
     const width = useWindowWidth();
     const [tabSelected, setTabSelected] = useState("all");
-    const [animated, setAnimated] = useState(false);
+  
     const router = useRouter();
     useEffect(() => {
         router.prefetch("/blog");
@@ -202,23 +200,7 @@ const Home = ({
                     <Chatbot chatbotUrl={chatbotUrl} />
                 </div>
 
-                {/*mini model component*/}
-                <div
-                    key="miniModel"
-                    className={cn(
-                        "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[1] overflow-hidden",
-                        selectedCard[tabSelected]["miniModel"]
-                            ? "opacity-100"
-                            : "opacity-50"
-                    )}
-                >
-                    {animated ? <MiniModel /> : <MiniPic />}
-                    <AnimationSwitch
-                        animated={animated}
-                        className="absolute top-4 right-4 z-50"
-                        setAnimated={setAnimated}
-                    />
-                </div>
+                
 
                 {/*actions component*/}
                 <div

@@ -16,7 +16,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
   const router = useRouter();
   return (
     <HeroUIProvider navigate={router.push}>
-      <NextThemesProvider defaultTheme="light" {...themeProps}>
+      <NextThemesProvider defaultTheme="light"{...themeProps}>
         {children}
       </NextThemesProvider>
     </HeroUIProvider>

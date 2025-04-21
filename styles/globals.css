@@ -3,7 +3,57 @@
 @source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
 
-@config "../tailwind.config.ts";
+
+:root {
+    /* 亮色主题下的颜色 */
+    --color-midnight: #eef0f7;
+    --color-knight: #2a2f35;
+    --color-darkBg: #0f1217;
+    --color-cardBlue: #8cc9fe;
+    --color-cardGreen: #63ccae;
+    --color-cardPink: #ffbfd1;
+    --color-cardYellow: #ffdf9a;
+  
+
+}
+
+/* 暗色主题下修改变量值 */
+.dark {
+    /* 覆盖卡片颜色 */
+    --color-cardGreen: var(--color-darkBg);
+    --color-cardBlue: var(--color-darkBg);
+    --color-cardPink: var(--color-darkBg);
+    --color-cardYellow: var(--color-darkBg);
+    --color-white:var(--color-darkBg);
+    --color-midnight: #eef0f7;
+    --color-knight: #2a2f35;
+
+    
+}
+/* 自定义颜色类 */
+.bg-midnight { background-color: var(--color-midnight); }
+.bg-knight { background-color: var(--color-knight); }
+.bg-darkBg { background-color: var(--color-darkBg); }
+.bg-cardBlue { background-color: var(--color-cardBlue); }
+.bg-cardGreen { background-color: var(--color-cardGreen); }
+.bg-cardPink { background-color: var(--color-cardPink); }
+.bg-cardYellow { background-color: var(--color-cardYellow); }
+
+.text-midnight { color: var(--color-midnight); }
+.text-knight { color: var(--color-knight); }
+.text-darkBg { color: var(--color-darkBg); }
+.text-cardBlue { color: var(--color-cardBlue); }
+.text-cardGreen { color: var(--color-cardGreen); }
+.text-cardPink { color: var(--color-cardPink); }
+.text-cardYellow { color: var(--color-cardYellow); }
+
+.border-midnight { border-color: var(--color-midnight); }
+.border-knight { border-color: var(--color-knight); }
+.border-darkBg { border-color: var(--color-darkBg); }
+.border-cardBlue { border-color: var(--color-cardBlue); }
+.border-cardGreen { border-color: var(--color-cardGreen); }
+.border-cardPink { border-color: var(--color-cardPink); }
+.border-cardYellow { border-color: var(--color-cardYellow); }
 
 
 .react-grid-item.react-grid-placeholder {
@@ -24,27 +74,13 @@
   .medium-zoom-image {
     border-radius: 2rem;
   }
-  
-  .notion-code {
-    border-radius: 1rem;
-  }
-  
-  .notion-code-copy-button {
-    display: none;
-  }
-  
-  iframe.notion-asset-object-fit {
-    background-color: transparent;
-    border-radius: 1rem;
-  }
+
   
   .video-stream html5-main-video {
     border-radius: 1rem;
     background-color: transparent;
   }
-  
-  .notion-yt-lite {
-    border-radius: 1rem;
-    background-color: transparent;
-  }
+
+
+
 
