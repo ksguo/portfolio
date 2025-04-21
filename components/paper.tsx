@@ -1,11 +1,13 @@
 import { Link } from "@heroui/react";
 import { GoArrowUpRight } from "react-icons/go";
 import Image from "next/image";
+
 interface PaperProps {
   paperUrl: string;
+  resumeUrl: string;
 }
 
-const Paper = ({ paperUrl }: PaperProps) => {
+const Paper = ({ paperUrl ,resumeUrl}: PaperProps) => {
   return (
     <div className="relative bg-cardYellow w-full h-full group dark:bg-darkBg">
       <div className="absolute -top-40 left-40 bg-cardPink w-[135%] h-full rounded-full dark:hidden" />
@@ -24,10 +26,10 @@ const Paper = ({ paperUrl }: PaperProps) => {
           <Link
             isExternal
             color="foreground"
-            href="https://ojs.aaai.org/index.php/AAAI/article/view/29266"
+            href={resumeUrl}
           >
             <span className="text-sm md:text-medium text-nowrap hidden group-hover:block invisible group-hover:visible mr-1 animate-fade">
-              DT-VAEGAN
+              Resume
             </span>
             <GoArrowUpRight />
           </Link>

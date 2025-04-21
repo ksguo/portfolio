@@ -10,7 +10,8 @@ export default async function Page() {
   const webagentUrl = await getStorageUrl('portfolio-assets', 'projects/next-blog-starter.png');
 
   const actionImageUrl = await getStorageUrl('portfolio-assets', 'projects/intellSpend.png');
-  const paperUrl = await getStorageUrl('portfolio-assets', 'documents/resume.pdf');
+  const paperUrl = await getStorageUrl('portfolio-assets', 'projects/next-blog-starter.png');
+  const resumeUrl = await getStorageUrl('portfolio-assets', 'documents/Kesheng_Guo_CV.pdf');
 
   console.log('Dynamic avatar URL:', avatarUrl);
 
@@ -22,6 +23,7 @@ export default async function Page() {
         webagentUrl={webagentUrl}
         actionImageUrl={actionImageUrl}
         paperUrl={paperUrl}
+        resumeUrl={resumeUrl}
 
       />
     </>

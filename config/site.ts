@@ -1,12 +1,12 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Chengxiang Wu - Full Stack Developer & Data Scientist",
-  description: "Personal website of Chengxiang (Eric) Wu",
+  name: "Kesheng Guo - Full Stack Web Developer ",
+  description: "Personal website of Kesheng Guo",
   links: {
-    github: "https://github.com/itsEricWu",
-    linkedin: "https://www.linkedin.com/in/chengxiang-wu/",
-    email: "mailto:cxwu00@gmail.com",
+    github: "https://github.com/ksguo",
+    linkedin: "https://www.linkedin.com/in/kesheng-guo/",
+    email: "mailto:kesheng.guo@gmx.de",
   },
 };
 

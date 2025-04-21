@@ -26,6 +26,7 @@ interface HomeProps {
     webagentUrl: string;
     actionImageUrl: string;
     paperUrl: string;
+    resumeUrl: string;
 
 }
 
@@ -35,7 +36,7 @@ const Home = ({
     webagentUrl,
     actionImageUrl,
     paperUrl,
-
+    resumeUrl,
 
 }: HomeProps) => {
     const width = useWindowWidth();
@@ -194,7 +195,7 @@ const Home = ({
                         selectedCard[tabSelected]["paper"] ? "opacity-100" : "opacity-50"
                     )}
                 >
-                    <Paper paperUrl={paperUrl} />
+                    <Paper paperUrl={paperUrl} resumeUrl={resumeUrl} />
                 </div>
 
 

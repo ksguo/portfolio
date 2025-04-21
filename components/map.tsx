@@ -37,7 +37,7 @@ const MapComponent: React.FC = () => {
           alt="Map"
           className="w-full h-full object-cover"
           height={300}
-          src="/map.jpg"
+          src="/map.png"
           width={300}
         />
       )}

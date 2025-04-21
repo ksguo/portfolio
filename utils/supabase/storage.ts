@@ -12,7 +12,4 @@ export async function getStorageUrl(bucket: string, path: string): Promise<strin
   
 }
 
-// 添加便捷函数获取各类资源
-export async function getAvatarUrl(filename: string): Promise<string> {
-  return getStorageUrl('portfolio-assets', `photos/${filename}`);
-}
+
