@@ -1,6 +1,6 @@
 'use client';
 
-import { useState ,useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import IconCloud from './icon-cloud';
 import { icons } from '../config/icons';
@@ -12,12 +12,9 @@ import { cn } from "@/lib/utils";
 
 import AvatarTransition from "@/components/avatar";
 import { ThemeSwitch } from "@/components/theme-switch";
-import CardStack from "@/components/card-stack";
 import AnimatedEmoji from "@/components/animated-emoji";
 import MapComponent from "@/components/map";
 import WebAgent from "@/components/webagent";
-import Chatbot from "@/components/chatbot";
-
 import Actions from "@/components/actions";
 import Paper from "@/components/paper";
 
@@ -25,22 +22,17 @@ import Paper from "@/components/paper";
 interface HomeProps {
 
     avatarUrl: string;
-    resumeUrl: string;
     asukaUrl: string;
-    photos: string[];
     webagentUrl: string;
-    chatbotUrl: string;
     actionImageUrl: string;
     paperUrl: string;
 
 }
 
 const Home = ({
-    photos,
     avatarUrl,
     asukaUrl,
     webagentUrl,
-    chatbotUrl,
     actionImageUrl,
     paperUrl,
 
@@ -48,7 +40,7 @@ const Home = ({
 }: HomeProps) => {
     const width = useWindowWidth();
     const [tabSelected, setTabSelected] = useState("all");
-  
+
     const router = useRouter();
     useEffect(() => {
         router.prefetch("/blog");
@@ -110,10 +102,10 @@ const Home = ({
                 >
                     <AvatarTransition avatarUrl={avatarUrl} asukaUrl={asukaUrl} />
                     <p className="text-sm md:text-medium">
-                        Hey! I’m <span className="font-oleo text-2xl"> Eric</span>, a
-                        software engineer, hailing from UCLA and Purdue. Currently, I’m
+                        Hey! I&apos;m <span className="font-oleo text-2xl"> Kesheng</span>, a
+                        Full-stack Web Developer, hailing from University of Cologne. Currently, I&apos;m
                         building a cool marketing product. My world revolves around web
-                        development. And yes, I have an adorable dog named Bert!
+                        development.
                     </p>
 
                 </div>
@@ -128,17 +120,7 @@ const Home = ({
                 >
                     <ThemeSwitch />
                 </div>
-                <div
-                    key="cardStack"
-                    className={cn(
-                        "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[2]",
-                        selectedCard[tabSelected]["cardStack"]
-                            ? "opacity-100"
-                            : "opacity-50"
-                    )}
-                >
-                    <CardStack photos={photos} />
-                </div>
+
 
                 <div
                     key="animatedEmoji"
@@ -189,18 +171,9 @@ const Home = ({
                     <WebAgent webAgentUrl={webagentUrl} />
                 </div>
 
-                {/*chatbot component*/}
-                <div
-                    key="chatBot"
-                    className={cn(
-                        "bg-white dark:bg-darkBg dark:border-2 dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center overflow-hidden z-[1]",
-                        selectedCard[tabSelected]["chatBot"] ? "opacity-100" : "opacity-50"
-                    )}
-                >
-                    <Chatbot chatbotUrl={chatbotUrl} />
-                </div>
 
-                
+
+
 
                 {/*actions component*/}
                 <div
