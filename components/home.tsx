@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
+import { useRouter } from 'next/navigation';
 import IconCloud from './icon-cloud';
 import { icons } from '../config/icons';
 import { layouts, selectedCard } from "@/config/layout";
@@ -48,12 +49,12 @@ const Home = ({
 
 }: HomeProps) => {
     const width = useWindowWidth();
-    const [tabSelected] = useState("all");
+    const [tabSelected, setTabSelected] = useState("all");
     const [animated, setAnimated] = useState(false);
-
-
-
-
+    const router = useRouter();
+    useEffect(() => {
+        router.prefetch("/blog");
+    }, [router]);
 
     if (!width) {
         return null;
@@ -76,6 +77,14 @@ const Home = ({
                     transition: { type: "spring", stiffness: 300, damping: 15 },
                 }}
                 radius={"full"}
+                onSelectionChange={(selected) => {
+                    if (selected === "blog") {
+                        router.push("/blog");
+
+                        return;
+                    }
+                    setTabSelected(selected as string);
+                }}
 
             >
                 <Tab key="all" title="All" />
