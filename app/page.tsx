@@ -1,10 +1,15 @@
-// app/page.tsx
-import {Button} from '@heroui/button'; 
+import Home from '@/components/home';
+import { getStorageUrl } from '@/utils/supabase/storage';
 
-export default function Page() {
+export default async function Page() {
+  // 使用工具函数动态获取 URL
+  const avatarUrl = await getStorageUrl('portfolio-assets', 'photos/spike.jpeg');
+  
+  console.log('Dynamic avatar URL:', avatarUrl);
+
   return (
-    <div>
-      <Button color='primary'>Click me</Button>
-    </div>
-  )
+    <>
+      <Home avatarUrl={avatarUrl} />
+    </>
+  );
 }

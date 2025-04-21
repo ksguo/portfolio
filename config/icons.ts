@@ -1,0 +1,23 @@
+export const icons = [
+    "typescript",
+    "javascript",
+    "java",
+    "react",
+    "html5",
+    "css3",
+    "nextjs",
+    "tailwindcss",
+    "prisma",
+    "postgresql",
+    "vercel",
+    "docker",
+    "git",
+    "jira",
+    "github",
+    "gitlab",
+    "visualstudiocode",
+    "openai",
+    "python",
+    "fastapi",
+
+];
