@@ -17,6 +17,7 @@ import MapComponent from "@/components/map";
 import WebAgent from "@/components/webagent";
 import Actions from "@/components/actions";
 import Paper from "@/components/paper";
+import Social from "@/components/Social";
 
 
 interface HomeProps {
@@ -108,6 +109,7 @@ const Home = ({
                         building a cool marketing product. My world revolves around web
                         development.
                     </p>
+                    <Social />
 
                 </div>
                 <div

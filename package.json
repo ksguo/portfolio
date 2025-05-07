@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroui/react": "^2.8.0-beta.1",
+    "@nextui-org/react": "^2.6.11",
     "@react-three/drei": "^10.0.6",
     "@react-three/fiber": "^9.1.2",
     "@supabase/ssr": "^0.6.1",
@@ -17,7 +18,8 @@
     "@types/three": "^0.175.0",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
-    "framer-motion": "^12.7.4",
+    "class-variance-authority": "^0.7.1",
+    "framer-motion": "^12.10.0",
     "fuse.js": "^7.1.0",
     "lamina": "^1.1.23",
     "mapbox-gl": "^3.11.0",
