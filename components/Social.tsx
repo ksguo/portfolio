@@ -1,42 +1,38 @@
 "use client";
 
 import { cva, type VariantProps } from "class-variance-authority";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import React, { PropsWithChildren, useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform, MotionValue } from "framer-motion";
+import React, { PropsWithChildren, useRef, ReactNode, ReactElement, isValidElement } from "react";
 import { Link } from "@heroui/react";
 import { IoLogoGithub, IoLogoLinkedin, IoMail } from "react-icons/io5";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-
 export interface SocialDockProps extends VariantProps<typeof dockVariants> {
   className?: string;
   magnification?: number;
   distance?: number;
-  children: React.ReactNode;
+  children: ReactNode;
 }
-
 
 export interface SocialIconProps {
   size?: number;
   magnification?: number;
   distance?: number;
-  mouseX?: any;
+  mouseX?: MotionValue<number>;
   className?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   props?: PropsWithChildren;
   url: string;
 }
-
 
 const DEFAULT_MAGNIFICATION = 60; 
 const DEFAULT_DISTANCE = 150;     
 const DEFAULT_ICON_SIZE = 35;     
 const DEFAULT_RISE = 12;          
 
-
 const dockVariants = cva(
-  "w-max p-1 flex items-end gap-2" 
+  "w-max p-1 flex items-end gap-2"
 );
 
 // --- SocialDock 组件 ---
@@ -54,12 +50,18 @@ const SocialDock = React.forwardRef<HTMLDivElement, SocialDockProps>(
     const mouseX = useMotionValue(Infinity);
 
     const renderChildren = () => {
-      return React.Children.map(children, (child: any) => {
-        return React.cloneElement(child, {
-          mouseX: mouseX,
-          magnification: magnification,
-          distance: distance,
-        });
+      return React.Children.map(children, (child) => {
+        if (isValidElement(child)) {
+          return React.cloneElement(
+            child as ReactElement<SocialIconProps>,
+            {
+              mouseX: mouseX,
+              magnification: magnification,
+              distance: distance,
+            } as Partial<SocialIconProps>
+          );
+        }
+        return child;
       });
     };
 
@@ -92,7 +94,11 @@ const SocialIcon = ({
 }: SocialIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  const distanceCalc = useTransform(mouseX, (val: number) => {
+  // 兼容独立使用
+  const localMouseX = useMotionValue(Infinity);
+  const safeMouseX = mouseX || localMouseX;
+
+  const distanceCalc = useTransform(safeMouseX, (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
     return val - bounds.x - bounds.width / 2;
   });
@@ -131,7 +137,7 @@ const SocialIcon = ({
           "hover:text-gray-900 dark:hover:text-white transition-colors duration-200",
           className,
         )}
-        style={{ width, y }} // 添加y轴变换
+        style={{ width, y }}
         {...props}
       >
         {children}
@@ -142,10 +148,8 @@ const SocialIcon = ({
 
 SocialIcon.displayName = "SocialIcon";
 
-
 const Social = () => {
   return (
-    // 移除默认内边距确保完全右对齐
     <div className="flex justify-end w-full" onMouseDown={(e) => e.stopPropagation()}>
       <SocialDock 
         magnification={60} 
